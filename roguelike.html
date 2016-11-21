@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<title>Eric Warrington Game Development Portfolio</title>
+		<title>Unnamed Roguelike - Eric Warrington Game Development Portfolio</title>
 		<meta charset="ISO-8859-1">
 		<meta name="viewport" content="width=device-width">
 			
 		<meta name="description" content="">
-		<meta name="author" content="">
+		<meta name="author" content="Eric Warrington">
 		<link rel="icon" href="../../favicon.ico">
 				
 		<!-- BootStrap CSS -->
@@ -25,45 +25,40 @@
 		<![endif]-->
 
 		<link rel="stylesheet" href="./css/main.css"></link>
-		<link rel="stylesheet" href="./templates/featurettes/featurettes.css"></link>
-		<link rel="stylesheet" href="./css/prettyprint-custom.css"></link>
 	</head>
 	
 	<body>
 		<div w3-include="./templates/navbar/navbar.html" callback=""></div>
 		
 		
-		
-		<!--
-			<div class="header">
-				<div><img src="" alt="profile pic"></div>
-				<div id="name">Eric Warrington</div>
-				<div class="">Game Developer
-			</div>
-		-->
-			
-
-
 		<!-- setting the min-height here to negate FOUSC -->
 		<div w3-include="./templates/carousel/carousel.html" callback="" style="min-height: 500px;"></div>
-		
-		
-		
-
-		
-		
-		
-		
 		
 		
 		<!-- Marketing messaging and featurettes
 		 ================================================== -->
 		<!-- Wrap the rest of the page in another container to center all the content. -->
 		<div class="container marketing">
-			<!--<div w3-include="./templates/marketing.html"></div>-->
+			<h1>Roguelike</h1>
+			<p>Project Dates: November 2015 - Present</p>
+			<p>Team Size: 1</p>
+			<p>Language: Swift (using SpriteKit)</p>
 			
-			<div w3-include="./templates/featurettes/featurettes.html" callback="displayFeaturetteData"></div>
+			<h3>A top-down dungeon-crawler roguelike game, designed to play and feel like <i>The Binding of Isaac: Rebirth</i>, yet be totally different at the same time.</h3>
 			
+			<h2>Disclaimer</h2>
+			<p>This is currently a game prototype/personal project. The current graphics (depicted in the screenshots) are not final.  The enemies are placeholder "programmer art" and the walls and pickups will be redone before release. <strong>I have no intention of releasing as-is.</strong> </p>
+			<p>Source of copyrighted graphics:</p>
+			<ul>
+				<li>The Legend of Zelda: A Link to the Past; reasoning: TBoI was based off the Zelda games, and I really like the style of LttP walls</li>
+				<li>Tibia (via <a href="http://tibia.wikia.com/wiki/Backpacks">this page</a>); reasoning: I actually stumbled onto these via Google search, but they also match exactly what I was looking for in pickup sprites</li>
+				<li>Ray Wendelich's SpriteKit tutorials</li>
+			</ul>
+			
+			<h2>Description</h2>
+			<p>Originally a project created for my <i>iOS Game &amp; Media App Development</i> class--due December 2015--this roguelike game is something I've been periodically coming back to and improving on since. I made the choice to use an existing design, rather than creating an original one, so I could give my full attention to learning Swift/SpriteKit and improving my programming skills. I also find the way <i>Rebirth</i> uses the Random Number Generator (RNG) to determine enemies, items, and drops fascinating--something I wanted to try to mimic and maybe improve. In <i>Rebirth</i>, everything is dropped or generated randomly, so you could end up with an over-powered item early on and face easy bosses, or you could get screwed and get garbage items and be forced to face really tough bosses. </p>
+			
+			<br />
 			<div w3-include="./templates/footer/footer.html"></div>
 			
 		</div>
@@ -72,12 +67,12 @@
 		
 		
 		<script src="./scripts/data.js"></script>
+		<script src="./projects/roguelike/rogue-data.js"></script>
 		<script type="text/javascript">
 			var navbarData=projects;
-			var carouselData=projects;
-			var featuretteData=projects;
-			</script>
-		<!-- Script to allow HTML imports -->
+			var carouselData=rogueData;
+		</script>
+		<!-- Script to allow HTML imports and repeats -->
 		<script src="./libs/w3data-edit.js"></script>
 		
 		<!-- Bootstrap core JavaScript

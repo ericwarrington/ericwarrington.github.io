@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Beyond the Tales - Eric Warrington Game Development Portfolio</title>
+		<meta charset="ISO-8859-1">
+		<meta name="viewport" content="width=device-width">
+			
+		<meta name="description" content="">
+		<meta name="author" content="Eric Warrington">
+		<link rel="icon" href="../../favicon.ico">
+				
+		<!-- BootStrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<link href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+			
+		<script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<link rel="stylesheet" href="./css/main.css"></link>
+		<link rel="stylesheet" href="./css/prettyprint-custom.css"></link>
+	</head>
+	
+	<body>
+		<div w3-include="./templates/navbar/navbar.html" callback=""></div>
+		
+
+		<!-- setting the min-height here to negate FOUSC -->
+		<!-- <div w3-include="./templates/carousel/carousel.html" callback="" style="min-height: 500px;"></div> -->
+		
+		
+		
+		<!-- Marketing messaging and featurettes
+		 ================================================== -->
+		<!-- Wrap the rest of the page in another container to center all the content. -->
+		<div class="container marketing">
+			<!--PROJECT CONTENT GOES HERE-->
+			<h1 style="margin-top: 200px;  //temp">Beyond the Tales</h1>
+			<p>Project Dates: March - October 2015</p>
+			<p>Team Size: 5</p>
+			<p>Language: C# (using Unity engine)</p>
+			
+			<h2>Summary</h2>
+			<p>Inspired by the early Final Fantasy and Zelda games, <i>Beyond the Tales</i> is a 2D JRPG centered around a young man named Joreld. Raised and trained in the way of the Knight by his father, a retired Knight Commander of the kingdom of Cairnmount, Joreld comes home one day and finds that his world is going to change forever.</p>
+			<p>I worked on this project with a group of my friends while in school.  We had two teams, Development and Story; I served on the Dev team. One of the devs also produced original scores for the game. We used the Unity game engine and wrote our own RPG engine--on top of it--from scratch.</p>
+			
+			<h2>Responsibilities</h2>
+			<p>The Development team was responsible for:</p>
+			<ul>
+				<li>Acquiring tilesets and other graphical assets (most were open-license)</li>
+				<li>Designing and building maps</li>
+				<li>The entire game engine: battles, NPCs, talking, scripts, maps, map-warps, etc.</li>
+				<li>Designing/creating enemies, items, etc.</li>
+				<li>Designing and building the UI</li>
+				<li>Handling save data</li>
+				<li>Anything else that required programming</li>
+			</ul>
+			
+			<p>The Story team was responsible for:</p>
+			<ul>
+				<li>Writing/creating all the story elements</li>
+				<li>Designing story-NPCs (dialogue)</li>
+				<li>Any requisite world-building</li>
+				<li>Any other story-related tasks</li>
+			</ul>
+			
+			<h2>Personal Responsibilities</h2>
+			<p>As a Game Developer on Beyond the Tales' Development team, I did a good portion of the research involved for finding map tilesets and enemy graphics. I also designed and implemented the process we used for warping between maps--this was mostly based off my experience making ROM hacks for 3rd-gen Pok&eacute;mon games. I did a little bit of work on map designs and creation--some map editing, too--but most of our maps were simple and didn't necessarily follow good level design conventions. Finally, I was responsible for the saving/loading features. This required creating a "save data" data-structure and binary-serializing/deserializing it as necessary. The save data included map warp data (what map the player was on) and event flags (what story events had already ocurred). I also updated the menu logic to call the correct save/load methods, handle cases when no saves existed, and handle playing new games even when a previous save existed.</p>
+			
+			<br />
+			<div w3-include="./templates/footer/footer.html"></div>
+			
+		</div>
+		<!-- /.container -->
+		
+		
+		
+		<script src="./scripts/data.js"></script>
+		<script type="text/javascript">
+			var navbarData=projects;
+			var carouselData=projects;
+		</script>
+		<!-- Script to allow HTML imports and repeats -->
+		<script src="./libs/w3data-edit.js"></script>
+		
+		<!-- Bootstrap core JavaScript
+		 ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="http://getbootstrap.com/assets/js/vendor/jquery.min.js"><\/script>')</script>
+		<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+	</body>
+</html>

@@ -1,0 +1,161 @@
+<!doctype html>
+<HTML>
+	<HEAD>
+		<TITLE>The Game of Mancala</TITLE>
+		
+		<!-- BootStrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	</HEAD>
+	<BODY class="container" style="padding-bottom: 20px !important;">
+		<DIV style="text-align: center;">
+			<DIV style="text-align: center;">
+    <H1>
+		CSCI-331 Programming Project
+	</H1>
+	<H1>
+		Local Search and Heuristics: The Game of Mancala
+	</H1>
+	<H2>
+		Due: Sunday September 29<SUP>th</SUP>, 2013, 11:59:00pm<br>
+	</H2>
+			</DIV>
+		</DIV>
+  
+  <HR/>
+  
+  <H2>
+	  Project Objective
+  </H2>
+  
+  <P>The objective of this project is to implement a strategy for an automated agent to win the game of Mancala. You are encouraged to be creative and experiment with a variety of different AI strategies to help the agent win the game. The only restriction is that your strategy must abide by the official <a href="Mancala_rules.html">rules</a> of the game.
+  <HR/>
+  
+  <H2>
+	  Project Requirements
+  </H2>
+  
+  <P>The project must be implemented in Java.
+  
+  <P>First, you should familiarize yourself with the <a href="Mancala_rules.html">rules </a>of the game, particularly if you have never played this game before. The rules will become clearer to you as you start playing the game and building the AI for it.
+  
+  <P>The skeleton code for the game that you will be implementing is given <a href="mancala.jar">here</a>. To unpack the jar file, type the following at a command prompt:
+  
+  <PRE>
+	  % jar -xf mancala.jar</PRE>
+  <br />
+  
+  <P>After unpacking the jar file, there will be five files in your directory:
+  <ul>
+	  <li>Mancala.java</li>
+	  <li>Board.java</li>
+	  <li>Pit.java</li>
+	  <li>Top.java</li>
+	  <li>Bottom.java</li>
+  </ul>
+  
+  <P>The main program to run the game is in the file <code>Mancala.java</code>. After compiling these five files you will be able to initialize and run a rudimentary GUI that displays the Mancala game board. After compiling the files, you can run the game by typing at the command prompt:
+  
+  <PRE>
+	  % java Mancala</PRE>
+  <br />
+  
+  When you click the "Start" button, the two players (Top and Bottom) alternate play by selecting one of the six pits in their row. Top's selection is shown in green and Bottom's selection is shown in red. Notice that when a pit is selected, the seeds in that pit are emptied (set to 0), but otherwise the game board does not change. This will not be the case when the game is running properly. Second, notice that the program alternates between Top and Bottom, randomly choosing a pit for each player when it is their turn. When the game is running properly, each player will use a strategy for chosing a pit instead of randomly chosing one. Thus, you have two tasks for this project: (1) implement <b>how the board changes</b> after each player (both Top and Bottom) makes a move (selects a pit) and (2) implement a <b>winning strategy for Top</b>, assuming that Bottom always chooses a random pit.
+  
+  <P>The logic for determining how the board changes after a move will be placed in both player files inside a method called <code>move</code>. The signature for this method is:
+  
+  <PRE>
+	  <code>public int move(Board board, int column)</code></PRE>
+  <br />
+  
+  <P>The <code>move</code> method takes a Board object and an <code>int</code> as input. The Board object is the actual game board that is updated after every move and is shared between the two players. The <code>int</code> input parameter indicates the column of the board that contains the pit that the player has selected, and the return value is used to indicate the result of the move. In summary, <code>move</code> does three things: (1) sets the seeds in the selected pit to 0, (2) increments the seeds in the other pits to the appropriate amount according to the rules of the game, and (3) determines if the move resulted in an extra turn or a capture, returning this information to the calling program.
+  
+  <P>The logic for implementing a strategy to win the game will also be placed in <code>Top.java</code>, inside a method named <code>strategy1</code> that takes a single parameter, the current Board, and returns an <code>int</code> that represents the chosen column.
+  
+  <PRE>
+	  <code>public int strategy1(Board board)</code></PRE>
+  <br />
+  
+  <P>The <code>strategy1</code> method is called by another method in <code>Top.java</code> named<code> strategy</code>. If you would like, you can implement several different strategies by creating additional strategy methods, and then just call the specific one in <code>strategy</code> when you want to try it out. At a minimum, you must implement <code>move</code> in both <code>Top.java</code> and<code> Bottom.java</code>, and <code>strategy1</code> in <code>Top.java</code> only. Notice that in the files you downloaded, <code>Bottom.java</code> is nearly identical to <code>Top.java</code>, except for the name of the class and the row of the board that the player works on (row 1 for Top and row 2 for Bottom - row 0 is reserved for displaying the buttons). Thus, Top and Bottom will have slightly different <code>move</code> methods because they select pits on different rows of the board and move their seeds around the board in a different direction - from left-to-right for Bottom and from right-to-left for Top.
+  
+  <P>You may assume that when I test your code, Bottom will be playing the game according to the rules, but will be selecting the pit location at random. If you implement <code>move</code> and <code>strategy1</code> in both Top and Bottom, then you can test them against each other by calling different strategies (or the same strategy) in each player, or you can test your best strategy against another student's best strategy by simply giving him or her a copy of your <code>Top.class</code> or <code>Bottom.class</code> file and see who wins more games!
+  
+  <P>In summary, for this project you must fill in <code>move</code> in both <code>Top.java</code> and <code>Bottom.java</code>, and <code>strategy1</code> in <code>Top.java</code> only, so that both players follow the rules and Top wins against Bottom most of the time.
+  
+  <P>Do not change anything in <code>Mancala.java</code>, <code>Board.java</code>, or <code>Pit.java</code>. Therefore, you only need to submit <code>Top.java</code>. If you have multiple strategies implemented in Top, be sure that the <code>strategy</code> method is calling the best one you have, because I will be testing your program on whatever method is called by <code>strategy</code> in Top.
+  
+  <P>Your strategy must abide by the posted <a href="Mancala_rules.html">rules</a> of the game. An illegal move will negate all points you may have received as a result of winning games along with additional deductions, as discussed below. If you are not sure about the nuances of the rules, please ask. Also, a program crash for any reason will result in a grade of 0 for this project. This project is an <b>individual effort</b>, i.e., you may not collaborate with another student, in this class or not, on any part of this project. Evidence of collaboration will result in a grade of 0 for the project and a record of the infraction will be filed with the CS office and with your home department.
+  
+  <HR/>
+  
+  <H2>
+	  Running the Mancala Program
+  </H2>
+  
+  <P>There are four different ways you can run the Mancala program:
+  
+  <ol>
+	  <li>
+		  <p>
+		  <code>
+			  %java Mancala
+		  </code>
+		  </p>
+		  
+		  </p>This will run the game with a default delay time between players of 1 second.</p></li>
+	  
+	  <li>
+		  <p>
+		  <code>
+			  %java Mancala <i>delay</i>
+		  </code>
+		  </p>
+		  
+		  <p>This will run the game with a delay time in milliseconds as specified in <i>delay</i>. Note that if you set a long delay time (such as four seconds, i.e., 4000) then you can easily pause the game between plays by clicking on the "Stop" button to examine a move, and then the "Start" button to resume play. This may help you to understand how the computer's strategy is working and confirm that only allowed moves are executed.</p></li>
+	  
+	  <li>
+		  <p>
+		  <code>
+			  %java Mancala 0
+		  </code>
+		  </p>
+		  
+		  <p>This will run the game with no delay time, allowing a human to play the game (as Bottom) against the computer (as Top). You, as the human, can choose a pit in the bottom row by clicking on it, and then when you are ready to let the computer take a turn, click on the button labeled "Top Takes a Turn". If the computer gets another turn as a result of a good move, then you must click on "Top Takes a Turn" again.</p></li>
+	  
+	  <li>
+		  <p>
+			  <code>
+				  %java Mancala <i>-delay</i>
+			  </code>
+		  </p>
+		  
+		  <p>This will run the game without the GUI a specified number of times, as given in <i>-delay</i>, and print to the screen the number of times that each player won. In other words, if you run the program as <code>java Mancala -100</code>, the game will be played 100 times and the number of times each player won will be printed to the screen.</p></li>
+	  
+  </ol>
+  
+  <HR/>
+  
+  <H2>
+	  Grading
+  </H2>
+  
+  <P>I will test your project by running your program and playing the game 100 times using your strategy for Top against a random strategy for Bottom. <b>1 point on your project grade will be deducted each time Top loses or ties to Bottom (out of 100 games). Also, all points gained by Top will be deducted if either player does not abide by the rules</b>. Note that it is entirely possible that when you run your program Top never loses to Bottom in 100 games, but when I run your program, Top loses several times out of 100 games (that is the nature of randomness). So it is a good idea to test your program by playing many more than 100 games (maybe even thousands of games!) to get an objective measure of how well your strategy performs. To be as fair to you as possible, I will test your project ten times, each time playing 100 games of your Top strategy against random Bottom, and use the best of the 10 tests for your grade. Also, your program must run in a reasonable amount of time - i.e., it should be able to play 100 games in well under 15 seconds on any machine. Points will be deducted for excessive runtimes. Your project may also have points deducted for excessive algorithmic inefficiencies or style issues such as insufficient code documentation.
+  
+  <HR/>
+  
+  <H2>
+	  Error Conditions and Messages
+  </H2>
+  
+  <P>All error conditions are maintained in <code>Mancala.java</code>. Therefore, you will not be responsible for any error handling. Of course, the code that you implement in Top cannot crash the program at any time. A program crash at any point will result in a grade of 0 for this project.
+  <HR/>
+  
+  <H2><a href="Gradesheet-proj1">Gradesheet</a> for project 1.
+	  
+	  <H2>
+		  Submission
+	  </H2>
+	  
+	  <P>When you are satisfied that you have implemented the rules properly and have your best possible strategy for winning the game, submit your code for <code>Top.java</code> to the MyCourses dropbox called <b>Project 1</b> before 11:59pm on the date given at the top of this write-up.
+	  
+	</BODY></HTML>

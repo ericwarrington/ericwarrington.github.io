@@ -1,0 +1,70 @@
+//Eric Warrington
+
+
+/* GLOBAL STYLES
+ -------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body
+{
+	padding-bottom: 40px;
+	color: #5a5a5a;
+}
+
+
+pre
+{
+	-moz-tab-size: 4;
+	-o-tab-size:   4;
+	tab-size:      4;
+}
+pre.prettyprint
+{
+	border: 0px solid #111 !important;
+	border-radius: 10px;
+}
+.prettyprint
+{
+	background: #F1F2F3;
+}
+li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9
+{
+	color: #555;
+	list-style-type: decimal;
+}
+li.L1, li.L3, li.L5, li.L7, li.L9
+{
+	background: #F7F7F7;
+}
+.pln	/*normal text*/
+{
+	color: #010203;
+}
+.pun	/*punctuation*/
+{
+	color: #0F0F66;
+}
+.kwd	/*keyword*/
+{
+	color: #330FEE;
+}
+.typ	/*type*/
+{
+	color: #0F0FAA;
+}
+.lit	/*literal*/
+{
+	color: #EE0F0F;
+}
+.com	/*comment*/
+{
+	color: #22AA33;
+}
+
+@media print
+{
+	pre.prettyprint
+	{
+		border: 0px solid #111;
+	}
+}

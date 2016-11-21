@@ -1,0 +1,85 @@
+//Eric Warrington
+//note: heavily borrowed from getbootstrap.com/examples/carousel/carousel.css
+
+
+/* MARKETING CONTENT
+ -------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4
+{
+	margin-bottom: 20px;
+	text-align: center;
+}
+.marketing h2
+{
+	font-weight: normal;
+}
+.marketing .col-lg-4 p
+{
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+
+/* Featurettes
+ ------------------------- */
+
+.featurette-divider
+{
+	margin: 30px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading
+{
+	font-weight: 300;
+	line-height: 1;
+	letter-spacing: -1px;
+}
+
+/* for the images in the featurettes */
+img .vertical-center
+{
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+
+/* RESPONSIVE CSS
+ -------------------------------------------------- */
+
+@media(min-width: 768px)
+{	
+	.featurette-heading
+	{
+		font-size: 50px;
+	}
+	
+	.featurette-divider
+	{
+		margin: 40px 0; /* Space out the Bootstrap <hr> more */
+	}
+}
+
+@media(min-width: 992px)
+{
+	
+	.featurette	/*img and txt side by side*/
+	{
+		min-height: 300px;
+		display: flex;
+		align-items: center;
+	}
+	
+	.featurette-divider
+	{
+		margin: 80px 0; /* Space out the Bootstrap <hr> more */
+	}
+	
+	.featurette-heading
+	{
+		margin-top: 20px;
+	}
+}

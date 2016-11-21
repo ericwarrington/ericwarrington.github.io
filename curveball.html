@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<title>Eric Warrington Game Development Portfolio</title>
+		<title>Curveball: 3D Pong - Eric Warrington Game Development Portfolio</title>
 		<meta charset="ISO-8859-1">
 		<meta name="viewport" content="width=device-width">
 			
 		<meta name="description" content="">
-		<meta name="author" content="">
+		<meta name="author" content="Eric Warrington">
 		<link rel="icon" href="../../favicon.ico">
 				
 		<!-- BootStrap CSS -->
@@ -25,45 +25,56 @@
 		<![endif]-->
 
 		<link rel="stylesheet" href="./css/main.css"></link>
-		<link rel="stylesheet" href="./templates/featurettes/featurettes.css"></link>
-		<link rel="stylesheet" href="./css/prettyprint-custom.css"></link>
 	</head>
 	
 	<body>
 		<div w3-include="./templates/navbar/navbar.html" callback=""></div>
 		
-		
-		
-		<!--
-			<div class="header">
-				<div><img src="" alt="profile pic"></div>
-				<div id="name">Eric Warrington</div>
-				<div class="">Game Developer
-			</div>
-		-->
-			
-
 
 		<!-- setting the min-height here to negate FOUSC -->
 		<div w3-include="./templates/carousel/carousel.html" callback="" style="min-height: 500px;"></div>
-		
-		
-		
-
-		
-		
-		
-		
 		
 		
 		<!-- Marketing messaging and featurettes
 		 ================================================== -->
 		<!-- Wrap the rest of the page in another container to center all the content. -->
 		<div class="container marketing">
-			<!--<div w3-include="./templates/marketing.html"></div>-->
+			<!--PROJECT CONTENT GOES HERE-->
+			<h1>Curveball: 3D Pong</h1>
+			<p>Project Dates: </p>
+			<p>Team Size: 1</p>
+			<p>Language: C#  (Using Unity engine)</p>
 			
-			<div w3-include="./templates/featurettes/featurettes.html" callback="displayFeaturetteData"></div>
+			<h3>A game of Pong in 3D made with the Unity game engine. Beat your opponent by curving the ball with your paddle and bouncing it off the walls and past his paddle! Easy and fun to play, but difficult to master.</h3>
 			
+			<h2>Features:</h2>
+			<ul>
+				<li>Control the curvature of the ball using your paddle's momentum!
+				<li>Rip serves past your opponent with the unique serving mechanism!
+				<li>Beat increasingly-difficult levels of AI, all the while trying to maximize your high-score in Infinite mode!
+				<li>See what level you can reach with only one life in Sudden-Death mode!
+				<li>Play quick matches with customizable AI levels in Battle mode!
+				<li>Customizable/Challenge modes coming soon!
+			</ul>
+			
+			<h2>Scoring for Infinite mode is based on:</h2>
+			<ul>
+				<li>Ball velocity
+				<li>Ball rotational velocity
+				<li>How long the ball has been in play
+				<li>What level the opponent is
+				<li>Your score streak (Score streaks at higher levels effect your score more than streaks at low levels)</li>
+				<li>The ratio of points lost/points won (over the current level and over the entire game)
+				<li>The number of lives you have remaining
+			</ul>
+			<p>Check out more details or download the game from <a href="https://play.google.com/store/apps/details?id=com.blakcat.pong">here</a>.</p>
+			
+			<br />
+			
+			<div w3-include="./templates/gallery/gallery.html"></div>
+			
+			
+			<br />
 			<div w3-include="./templates/footer/footer.html"></div>
 			
 		</div>
@@ -72,12 +83,13 @@
 		
 		
 		<script src="./scripts/data.js"></script>
+		<script src="./projects/curveball/curve-data.js"></script>
 		<script type="text/javascript">
 			var navbarData=projects;
-			var carouselData=projects;
-			var featuretteData=projects;
-			</script>
-		<!-- Script to allow HTML imports -->
+			var carouselData=curveData1;
+			var galleryData=curveData2;
+		</script>
+		<!-- Script to allow HTML imports and repeats -->
 		<script src="./libs/w3data-edit.js"></script>
 		
 		<!-- Bootstrap core JavaScript

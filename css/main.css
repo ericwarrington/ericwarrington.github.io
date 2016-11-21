@@ -1,0 +1,30 @@
+/*
+//Eric Warrington
+//note: heavily borrowed from getbootstrap.com/examples/carousel/carousel.css
+*/
+
+
+/* GLOBAL STYLES
+ -------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body
+{
+	padding-bottom: 40px;
+	color: #5a5a5a;
+}
+
+
+
+/* RESPONSIVE CSS
+ -------------------------------------------------- */
+
+@media(min-width: 768px)
+{
+	
+}
+
+@media(min-width: 992px)
+{
+	
+}

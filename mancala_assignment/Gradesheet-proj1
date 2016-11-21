@@ -1,0 +1,32 @@
+CSCI-331 Introduction to Intelligent Systems
+
+Project 1 Submission Gradesheet 
+
+UserId: _______________
+
+
+Implementation:
+
+  1. move() is implemented correctly (50 points)                     __________
+
+  2. At least one strategy is implemented (50 points)                __________
+
+
+Functionality Deductions:   
+          
+  1. 1 point deducted for every game Top loses or ties to 
+       Bottom out of 100                                             __________
+
+  2. Program does not run in a reaonable amount of time
+
+       100 games <= 15 seconds                  :  0 points deducted
+       100 games >  15 seconds and <= 30 seconds: 10 points deducted
+       100 games >  30 seconds and <= 1  minute:  20 points deducted 
+       100 games > 1 minute: ALL points deducted                     __________
+
+Code Style Deductions (up to 5 points deducted):                     __________
+
+       Comments:
+
+
+Total points for project 1 submission (100 points maximum)           __________

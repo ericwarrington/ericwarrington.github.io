@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Mancala AI - Eric Warrington Game Development Portfolio</title>
+		<meta charset="ISO-8859-1">
+		<meta name="viewport" content="width=device-width">
+			
+		<meta name="description" content="">
+		<meta name="author" content="Eric Warrington">
+		<link rel="icon" href="../../favicon.ico">
+			
+			<script>console.log("weeee test");</script>
+				
+		<!-- BootStrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<!-- Code Prettify CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+		<link rel="stylesheet" href="https://cdn.rawgit.com/google/code-prettify/master/styles/sons-of-obsidian.css">
+		
+		</style>
+		
+		
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<link href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+			
+		<script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<link rel="stylesheet" href="./css/main.css"></link>
+		<!--link rel="stylesheet" href="./css/navbar/navbar.css"></link-->
+		<link rel="stylesheet" href="./css/carousel/carousel.css"></link>
+		<link rel="stylesheet" href="./css/prettyprint-custom.css"></link>
+	</head>
+	
+	<body>
+		<div w3-include="./templates/navbar/navbar.html" callback=""></div>
+		
+
+		<!-- setting the min-height here to negate FOUSC -->
+		<div w3-include="./templates/carousel/carousel.html" callback="" style="min-height: 500px;"></div>
+		
+		
+		
+		<!-- Project Content
+		 ================================================== -->
+		<!-- Wrap the rest of the page in another container to center all the content. -->
+		<div class="container marketing">
+			<!--PROJECT CONTENT GOES HERE-->
+			<div>
+				<h1 style="margin-top: 200px;  //temp">Mancala AI Module</h1>
+				<p>Project Dates: September 2 - 30, 2013</p>
+				<p>Team Size: 1</p>
+				<p>Language: Java</p><br />
+				
+				
+				<h2>Overview</h2>
+				<p>The goal of this project was to design a winning strategy for an automated agent playing games of Mancala against another AI who will always make a random move choice. The project was assigned in my <i>Intro to Intelligent Systems</i> course, and the full project details are available <a href="mancala_assignment/proj1.html">here</a>. Students were given this <a href="mancala_assignment/mancala.jar">skeleton code</a> (containing the means to run the game and a simple GUI) and were strongly encouraged to experiment and be creative with their strategies.  To make it easier to test an algorithm with the GUI, a student's algorithm would play as the top player and the random-AI would play as the bottom player. While an opponent making random moves may seem trivial, it is not nearly as easy as it seems, although it is not very difficult either. Many 2-player AI algorithms (such as minimax) rely on the assumption that their opponents will make reasonably intelligent moves, so an opponent making moves at random has the potential to muck up any algorithm that relies heavily on pruning to make it more efficient. (This also, obviously, assumes the game has not been <i>solved</i>.) However, it is not particularly difficult because the opponent is likely to not make the best move, and it's easy to take advantage of this.</p>
+				
+				<h2>Mancala Rules Summary</h2>
+				<p>Mancala is a classic 2-player board game where each player gets 6 'pits' and one 'mancala'. Each pit starts with 4 stones; turns consist of selecting a pit and dropping its stones, one at a time, into consecutive pits, counter-clockwise. A player drops stones into his own mancala, but skips over his opponent's mancala. The game ends when either player's 6 pits are empty and the player with the most stones in his mancala wins. Additionally, dropping the final stone into your mancala grants you an extra turn, while dropping the final stone into an empty pit on your side <i>captures</i> all stones in the opposite pit and they are added to your mancala. More specifics and the official rules used for this project can be found <a href="mancala_project/mancala_rules.html">here</a>.</p>
+				
+				<h2 id="eval">Evaluation</h2>
+				<p>Strategies were evaluated based on how many times out of 100 they could beat the random-opponent. One point was deducted each time Top lost to or tied with Bottom. Additionally: </p>
+				<ul>
+					<li>Either player breaking the rules resulted in a grade of 0</li>
+					<li>A strategy could not take more than 15 seconds to play 100 games</li>
+					<li>A strategy could not cause the game to crash; doing so would result in a grade of 0</li>
+				</ul>
+				
+				<h2>My Solution</h2>
+				<p>My strategy combined a variety of AI techniques. I took advantage of the randomness associated with the opponent's choices by utilizing a set pattern for the first few turns.  Following that, the strategy used a heuristic to determine the "best" move.  If the heuristic didn't generate a move, then a pit was chosen at random.  Here's the algorithm in more detail:</p>
+				<ul>
+					<li>
+						Pattern - runs the same way every time, but only at the start of the game
+						<ol>
+							<li>First pit (closest to the mancala) - empties the pit</li>
+							<li>Fourth (or fifth) pit, whichever causes the last stone to land in the mancala [EXTRA TURN]</li>
+							<li>First pit - only has one stone [EXTRA TURN]</li>
+							<li>Fifth (or sixth) pit, whichever lands in the first pit [CAPTURE]</li>
+						</ol>
+					</li>
+					<li>
+						Heuristic - choose a pit based on
+						<ul>
+							<li>If it will generate an extra turn</li>
+							<li>If it will capture any stones</li>
+							<li>If it contains a "huge clump" - make clumps harder for the opponent to capture by breaking them up early</li>
+						</ul>
+					</li>
+					<li>When the heuristic returns <code>-1</code>, choose a pit at random because the opponent doesn't know how to take advantage of a bad move</li>
+				</ul>
+				<p>
+					<a class="btn btn-primary" data-toggle="collapse" href="#strategy" aria-expanded="false" aria-controls="strategy">
+						View animation
+					</a>
+				</p>
+				<div id="strategy" class="collapse">
+					<div class="">
+						<p>Graphical view of the pattern used in the first 4 turns:</p>
+						<img class="img-responsive" src="images/strategy.gif"></img>
+					</div>
+				</div>
+				
+				
+				<h2>Alternate Solution</h2>
+				<p>After finishing work on my "official" solution, I decided to explore other ways I might beat the random-opponent (after all, I'd been encouraged to "be creative and experiment"). One thing that interested me in this project (and also for a lot of games I play) is how to "break" the opponent's strategy. I realized the way to break it was to target the random number generator it was using. I could set the seed of the RNG to a number that guaranteed a win via my official strategy and be unbeatable! Every game of the 100 would be the same, and all would result in a win for my AI. To the professor it would look like I had simply won every game, so the algorithm would score full points. The AI wouldn't break any of the rules, wouldn't cause a crash, and would run efficiently. However, in the end I didn't submit it since it was contrary to the purpose of the project.</p>
+				<p>
+					<a class="btn btn-primary" data-toggle="collapse" href="#rngHack" aria-expanded="false" aria-controls="rngHack">
+						View code
+					</a>
+				</p>
+				<div id="rngHack" class="collapse">
+					<div class="highlight">
+						<pre class="prettyprint linenums">
+try
+{
+	Field field=Math.class.getDeclaredField("randomNumberGenerator");
+	field.setAccessible(true);
+	Random r=new Random();
+	r.setSeed(50);
+	field.set(null, r);
+}
+catch(Exception e) {}
+						</pre>
+					</div>
+				</div>
+				
+				<h2>Results</h2>
+				<p>For evaluation of the algorithm (see also <a href="#eval">Evaluation</a>), <code>Mancala.java</code> would be run 100 times to produce a score. Ten scores would be generated, and the best would be the final grade on the project. To estimate how well my strategy would do, I built a Java class, <code>MRunner</code>, to simulate how the grading would be done. By default, <code>MRunner</code> generates 1,000 scores; for every 10 scores, it tracks the best score (a total of 100 "best scores").  It also tracks the best overall score, the average score, and the median score.  All 1,000 scores, the 100 best scores, the average, the median, and the overall best score are printed out at the end.  Based on the 100 best scores, I could estimate what my grade might be. Per the results from <code>MRunner</code>, the lowest score it achieved is a 92, but the lowest "best score" is a 98 with a 95% chance that it'll score even higher!</p>
+				<p>
+					<a class="btn btn-primary" data-toggle="collapse" href="#results" aria-expanded="false" aria-controls="results">
+						View <code>MRunner</code> output
+					</a>
+				</p>
+				<div id="results" class="collapse">
+					<div class="">
+						<img src="images/mancala-results.png"></img>
+					</div>
+				</div>
+				
+				<h2>Algorithm Code</h2>
+				<p>View the code for the algorithm by clicking on the button below.  Or, view/download the entire project on the <a href="https://www.github.com/ericwarrington/mancala">Github page</a>.</p>
+				<p>
+					<a class="btn btn-primary" data-toggle="collapse" href="#codeSample" aria-expanded="false" aria-controls="codeSample">
+						View code sample
+					</a>
+				</p>
+				<div id="codeSample" class="collapse">
+					<div class="highlight">
+						<pre class="prettyprint linenums">
+class Top
+{
+	...
+
+	public int strategy1(Board board)
+	{
+		int choice=-1;
+
+		//test if it's turn 1
+		if(turn==1 || isFirstTurn(board))
+		{
+			turn=1;
+			/*
+			try
+			{
+				Field field=Math.class.getDeclaredField("randomNumberGenerator");
+				field.setAccessible(true);
+				Random r=new Random();
+				r.setSeed(50);
+				field.set(null, r);
+			}
+			catch(Exception e) {}
+			//*/
+		}
+
+		switch(turn)
+		{
+			case 1:
+				choice=1;
+				break;
+			case 2:			//2,1
+				for(int i=4; i&lt;board.WIDTH-1; i++)
+				{
+					if(board.getSeeds(1,i)==i)
+					{
+						choice=i;
+						break;
+					}
+				}
+				break;
+			case 3:			//2,2
+				choice=1;
+				break;
+			case 4:			//2,3
+				for(int i=4; i&lt;board.WIDTH-1; i++)
+					if(board.getSeeds(1,i)==i-1)
+						choice=i;
+				break;
+		}
+		
+		turn++;
+		
+		if(choice == -1)
+			choice=pitChoice(board);
+		
+		if(choice == -1)
+			choice=randStrategy(board);
+		
+		return choice;
+	}
+	
+	private int pitChoice(Board b)
+	{
+		int i=xtraTurn(1, b);
+		int max=(i == -1) ? b.WIDTH-1 : i;
+		for(int c=1; c&lt;max; c++)
+		{
+			//check how many stones are cap'd
+			int caps=isCap(c, b);
+			if(caps != -1)
+			{
+				//always return first cap if more than 2 stones are cap'd
+				if(caps&gt;2) return c;
+				if(i == -1)	//no shot at xtra turn &amp; less than 2 stones are cap'd
+				{
+					int a=hugeClumps(b);
+					if(a == -1)	//no clumps
+						return c;
+					else
+						return a;
+				}
+				//else: only one stone cap'd BUT there's an extra turn option
+			}
+		}
+			
+		int a=hugeClumps(b);
+		if(i == -1)	//no extra turn, so deal with clumps
+			return a;
+		else		//extra turn
+			return i;
+	}
+	
+	private int xtraTurn(int min, Board b)
+	{
+		//return the index of the first pit that'll give an extra turn
+	}
+		
+	private int isCap(int c, Board b)
+	{
+		//return the number of seeds captured, or -1 if no capture occurs, if the given pit were chosen
+	}
+			
+	private int hugeClumps(Board b)
+	{
+		//check for huge clumps
+		//return the index of the first clump of 8+ seeds, or -1 if none exists
+	}
+}
+				</pre>
+					</div>
+				</div>
+				
+				<br />
+			</div>
+			
+			<div w3-include="./templates/footer/footer.html"></div>
+		</div>
+		<!-- /.container -->
+		
+		
+		
+		
+		<script src="./scripts/data.js"></script>
+		<script type="text/javascript">
+			var navbarData=projects;
+			var carouselData=projects;
+		</script>
+		<!-- Script to allow HTML imports and repeats -->
+		<script src="./libs/w3data-edit.js"></script>
+		
+		<!-- Bootstrap core JavaScript
+		 ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="http://getbootstrap.com/assets/js/vendor/jquery.min.js"><\/script>')</script>
+		<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+		<!-- Code Prettify JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+		
+		<script>
+			!function($)
+			{
+				$(function()
+				{
+					prettyPrint();
+				})
+			}(window.jQuery);
+		
+		prettyPrint();
+		</script>
+	</body>
+</html>
