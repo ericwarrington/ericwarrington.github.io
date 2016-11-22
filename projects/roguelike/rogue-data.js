@@ -1,6 +1,6 @@
 "use strict";
 
-var rogueData=
+var rogueData1=
 {
 	data:
 	[
@@ -41,9 +41,9 @@ var rogueData=
 	]
 };
 
-var xxxData=
+var rogueData2=
 {
-	data: rogueData.data.concat(
+	data: rogueData1.data.concat(
 	[
 	 
 		{

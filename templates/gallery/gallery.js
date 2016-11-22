@@ -35,13 +35,13 @@
 	function setWrapperWidth()
 	{
 		var imgs=$("#image-wrapper > a");
-		var sum=1;	//buffer so all imgs fit
+		var sum=5;	//buffer so all imgs fit
 		for(var i=0; i<imgs.length; i++)
 		{
 			sum+=imgs[i].clientWidth;
 		}
 		
-		$("#image-wrapper")[0].setAttribute("style", "display: block; width:" + sum + "px;");
+		$("#image-wrapper")[0].setAttribute("style", "display: block; width:" + sum + "px; height:100%");
 	}
 	
 	if(document.readyState=="complete")
