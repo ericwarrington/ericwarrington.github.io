@@ -44,12 +44,51 @@
 		$("#image-wrapper")[0].setAttribute("style", "display: block; width:" + sum + "px; height:100%");
 	}
 	
+	var bitflag=0;
 	if(document.readyState=="complete")
 	{
-		setWrapperWidth();
+		var FLAG_MAX=0xFFFFFFFF;
+		
+		var imgs=$("#image-wrapper > a > img");
+		bitflag=FLAG_MAX << imgs.length;
+		for(var i=0; i<imgs.length; i++)
+		{
+			callme(i);	//pass the *value* of the index
+		}
+		
+		//'index' is passed by value
+		function callme(index)
+		{
+			if(index>31)
+			{
+				console.warn("Gallery can only handle 32 images at a maximum.", index);
+				return;
+			}
+			
+			imgs[index].onload=function()
+			{
+				var mask=(1 << index);
+				bitflag=(bitflag | mask) >>> 0;
+				
+				if(bitflag==FLAG_MAX)
+				{
+					console.log("gallery images loaded");
+					setWrapperWidth();
+				}
+			};
+		}
 	}
 	else
 	{
 		$(document).load(setWrapperWidth);
 	}
 }();
+
+
+
+
+
+
+
+
+
