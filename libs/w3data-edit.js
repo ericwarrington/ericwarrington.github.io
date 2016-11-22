@@ -222,7 +222,6 @@ function w3DisplayData(id, data)
 					//w3IncludeHTML();
  
 					//include javascript
-					console.log(a.tagName);
 					if(a.tagName=="SCRIPT")
 					{
 						eval(xhttp.responseText + "//# sourceURL=" + file);

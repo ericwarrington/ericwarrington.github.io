@@ -17,12 +17,5 @@ w3DisplayData("navbar", navbarData);
 	e.insertBefore(span.text("esw")[0], e.children[0]);
 	e.onmouseover=function(e) { this.href="mailto:Eric_Warrington"; };
 	e.parentNode.onmouseover=function(event) { e.href="mailto:Eric_Warrington"; };
-
-	//e.onmouseover=function(e) { this.href="mailto:Eric_Warrington"; e.preventDefault(); };
-	//e.onmouseout=function() { this.href="javascript:void(0);"; };
-
-	console.log(e.onclick);
-	console.log(e.onmouseover);
-	window.debugE=e;
 }();
 
