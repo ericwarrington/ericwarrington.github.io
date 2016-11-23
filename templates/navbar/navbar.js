@@ -19,3 +19,25 @@ w3DisplayData("navbar", navbarData);
 	e.parentNode.onmouseover=function(event) { e.href="mailto:Eric_Warrington"; };
 }();
 
+!function()
+{
+	$(document).ready
+	(
+	function()
+	 
+	{
+		$('li.active').removeClass('active');
+		//$('a[href="' + location.pathname + '"]').closest('li').addClass('active');
+		var loc=location.pathname.replace(/[\D\d]*\/{1}/g, '').replace(/.html/g, '') || "index";
+		var active=$('#navbar a[href*="' + loc + '"]').closest('li');
+		active.addClass('active');
+	 
+		if($.contains($("#navbar li.dropdown")[0], active[0]))
+		{
+			$("#navbar li.dropdown").addClass('active');
+		}
+	
+		window.debugAct=active;
+	});
+}();
+
