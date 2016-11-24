@@ -21,10 +21,7 @@ w3DisplayData("navbar", navbarData);
 
 !function()
 {
-	$(document).ready
-	(
-	function()
-	 
+	$(document).ready(function()
 	{
 		$('li.active').removeClass('active');
 		//$('a[href="' + location.pathname + '"]').closest('li').addClass('active');
