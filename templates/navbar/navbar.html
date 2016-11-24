@@ -6,8 +6,17 @@
 <script type=".text/javascript">
 	window.setAlt=function(image)
 	{
-		image.setAttribute("alt", "mail@spambot.com".replace(/[a-z.]/g, ''));
-	}
+		window.setTimeout(function()
+		{
+			//image.setAttribute("alt", "mail@spambot.com".replace(/[a-z.]/g, ''));
+			
+			var parent=image.parentNode;
+			var at=document.createElement("at");
+			at.innerHTML="mail@spambot.com".replace(/[a-z.]/g, '');
+			parent.insertBefore(at, image);
+			image.setAttribute("style", "display: none");
+		}, 10);
+	};
 </script>
 
 <!-- NAVBAR HTML
