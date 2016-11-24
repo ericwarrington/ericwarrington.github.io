@@ -232,8 +232,11 @@ function w3DisplayData(id, data)
 						for(var c=0; c<scripts.length; c++)
 						{
 							var s=scripts[c];
-							(s.childNodes.length>0) ? eval(s.childNodes[0].data + "//# sourceURL=" + file + '-' + c + ".js") : "";
-							a.innerHTML=xhttp.responseText;
+							if(s.childNodes.length>0)
+							{
+								eval(s.childNodes[0].data + "//# sourceURL=" + file + '-' + c + ".js");
+								a.innerHTML=xhttp.responseText;
+							}
 						}
 					}
  
