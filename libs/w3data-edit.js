@@ -191,6 +191,7 @@ function w3DisplayData(id, data)
 	}
 }
 
+window.w3inclusions={};
 (function w3IncludeHTML()
 {
 	var z, i, a, file, xhttp;
@@ -201,6 +202,12 @@ function w3DisplayData(id, data)
 		{
 			a = z[i].cloneNode(false);
 			file = z[i].getAttribute("w3-include");
+ 
+			console.log("include:", file, w3inclusions[file]);
+			if(w3inclusions[file])
+				continue;
+			w3inclusions[file]=true;
+ 
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function()
 			{
@@ -215,7 +222,7 @@ function w3DisplayData(id, data)
 					var callback=a.getAttribute("callback");
 					if(callback)
 					{
-						window[callback]();
+						window[callback] && window[callback]();
 						a.removeAttribute("callback");
 					}
  
@@ -228,7 +235,7 @@ function w3DisplayData(id, data)
 						{
 							eval(xhttp.responseText + "//# sourceURL=" + file);
 						}
-						catch(e) {debug.warn("Error with script in file:", file, e);}
+						catch(e) {console.warn("Error with script in file:", file, e);}
 					}
 					else
 					{
@@ -240,15 +247,19 @@ function w3DisplayData(id, data)
 							{
 								try
 								{
-									eval(s.childNodes[0].data + "//# sourceURL=" + file + '-' + c + ".js");
+									new Function(s.childNodes[0].data + "//# sourceURL=" + file + '-' + c + ".js")();
 									a.innerHTML=xhttp.responseText;
 								}
-								catch(e) {debug.warn("Error with script in file:", file, e);}
+								catch(e) {console.warn("Error with script in file:", file, '\n', e.stack || e);}
 							}
 						}
 					}
  
- 
+					w3IncludeHTML();
+				}
+				else if(xhttp.readyState==4)
+				{
+					console.warn("There was an error:", file, xhttp.statusText);
 					w3IncludeHTML();
 				}
 			}
