@@ -1,21 +1,19 @@
 <!-- Eric Warrington -->
 
 
-<style w3-include="./templates/navbar/navbar.css"></style>
+<style w3-include="./templates/navbar/navbar.css" callback="chickens"></style>
 
 <script type=".text/javascript">
 	window.setAlt=function(image)
 	{
-		window.setTimeout(function()
-		{
-			//image.setAttribute("alt", "mail@spambot.com".replace(/[a-z.]/g, ''));
-			
-			var parent=image.parentNode;
-			var at=document.createElement("at");
-			at.innerHTML="mail@spambot.com".replace(/[a-z.]/g, '');
-			parent.insertBefore(at, image);
-			image.setAttribute("style", "display: none");
-		}, 10);
+		//stop image from continually erroring (when cloned)
+		image.setAttribute("alt", "mail@spambot.com".replace(/[a-z.]/g, ''));
+		
+		var parent=image.parentNode;
+		var at=document.createElement("at");
+		at.innerHTML="mail@spambot.com".replace(/[a-z.]/g, '');
+		parent.replaceChild(at, image);
+		image.setAttribute("style", "display: none");
 		
 		image.onerror=null;
 	};
