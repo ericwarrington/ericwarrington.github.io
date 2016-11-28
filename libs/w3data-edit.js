@@ -224,7 +224,11 @@ function w3DisplayData(id, data)
 					//include javascript
 					if(a.tagName=="SCRIPT")
 					{
-						eval(xhttp.responseText + "//# sourceURL=" + file);
+						try
+						{
+							eval(xhttp.responseText + "//# sourceURL=" + file);
+						}
+						catch(e) {debug.warn("Error with script in file:", file, e);}
 					}
 					else
 					{
@@ -234,8 +238,12 @@ function w3DisplayData(id, data)
 							var s=scripts[c];
 							if(s.childNodes.length>0)
 							{
-								eval(s.childNodes[0].data + "//# sourceURL=" + file + '-' + c + ".js");
-								a.innerHTML=xhttp.responseText;
+								try
+								{
+									eval(s.childNodes[0].data + "//# sourceURL=" + file + '-' + c + ".js");
+									a.innerHTML=xhttp.responseText;
+								}
+								catch(e) {debug.warn("Error with script in file:", file, e);}
 							}
 						}
 					}
