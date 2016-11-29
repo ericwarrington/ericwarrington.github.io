@@ -7,7 +7,7 @@
 	
 	document.getElementById('links').onclick=function(event)
 	{
-		const urlProp="img";
+		var urlProp="img";
 		
 		event=event || window.event;
 		var target = event.target || event.srcElement;
