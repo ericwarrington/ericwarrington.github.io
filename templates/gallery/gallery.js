@@ -35,7 +35,7 @@
 	function setWrapperWidth()
 	{
 		var imgs=$("#image-wrapper > a");
-		var sum=7;	//buffer so all imgs fit
+		var sum=15;	//buffer so all imgs fit
 		var buffer=[]	//for testing
 		for(var i=0; i<imgs.length; i++)
 		{
