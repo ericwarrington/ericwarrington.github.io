@@ -36,12 +36,15 @@
 	{
 		var imgs=$("#image-wrapper > a");
 		var sum=5;	//buffer so all imgs fit
+		var buffer=[]	//for testing
 		for(var i=0; i<imgs.length; i++)
 		{
 			sum+=imgs[i].clientWidth;
+			buffer[i]=imgs[i].clientWidth;
 		}
 		
 		$("#image-wrapper")[0].setAttribute("style", "display: block; width:" + sum + "px; height:100%");
+		console.log(buffer, sum);
 	}
 	
 	var bitflag=0;
