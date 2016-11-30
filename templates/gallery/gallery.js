@@ -35,7 +35,7 @@
 	function setWrapperWidth()
 	{
 		var imgs=$("#image-wrapper > a");
-		var sum=15;	//buffer so all imgs fit
+		var sum=5;  	//buffer so all imgs fit
 		var buffer=[]	//for testing
 		for(var i=0; i<imgs.length; i++)
 		{
@@ -65,8 +65,13 @@
 			console.warn("Gallery can only handle 32 images at a maximum.", index);
 			return;
 		}
+		else if(!imgs[index].src)
+		{
+			imgComplete();
+			return;
+		}
 		
-		imgs[index].onload=function()
+		function imgComplete()
 		{
 			var mask=(1 << index);
 			bitflag=(bitflag | mask) >>> 0;
@@ -76,7 +81,9 @@
 				console.log("gallery images loaded");
 				setWrapperWidth();
 			}
-		};
+		}
+		imgs[index].onload=imgComplete;
+		imgs[index].onerror=imgComplete;	//TODO: add warning msg
 	}
 }();
 
