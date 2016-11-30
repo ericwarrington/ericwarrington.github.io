@@ -32,6 +32,8 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
 	margin: auto;
 	height: 500px;
 	min-width: 100%;
@@ -89,6 +91,8 @@
 		top: 25%;
 		left: 25%;
 		transform: translate(-25%,-25%);
+		-webkit-transform: translate(-25%,-25%);
+		-ms-transform: translate(-25%,-25%);
 	}
 }
 
