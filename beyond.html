@@ -33,7 +33,7 @@
 		
 
 		<!-- setting the min-height here to negate FOUSC -->
-		<!-- <div w3-include="./templates/carousel/carousel.html" callback="" style="min-height: 500px;"></div> -->
+		<div w3-include="./templates/carousel/carousel.html" callback="" style="min-height: 500px;"></div>
 		
 		
 		
@@ -42,7 +42,7 @@
 		<!-- Wrap the rest of the page in another container to center all the content. -->
 		<div class="container marketing">
 			<!--PROJECT CONTENT GOES HERE-->
-			<h1 style="margin-top: 200px;  //temp">Beyond the Tales</h1>
+			<h1>Beyond the Tales</h1>
 			<p>Project Dates: March - October 2015</p>
 			<p>Team Size: 5</p>
 			<p>Language: C# (using Unity engine)</p>
@@ -74,6 +74,11 @@
 			<h2>Personal Responsibilities</h2>
 			<p>As a Game Developer on Beyond the Tales' Development team, I did a good portion of the research involved for finding map tilesets and enemy graphics. I also designed and implemented the process we used for warping between maps--this was mostly based off my experience making ROM hacks for 3rd-gen Pok&eacute;mon games. I did a little bit of work on map designs and creation--some map editing, too--but most of our maps were simple and didn't necessarily follow good level design conventions. Finally, I was responsible for the saving/loading features. This required creating a "save data" data-structure and binary-serializing/deserializing it as necessary. The save data included map warp data (what map the player was on) and event flags (what story events had already ocurred). I also updated the menu logic to call the correct save/load methods, handle cases when no saves existed, and handle playing new games even when a previous save existed.</p>
 			
+			
+			<br />
+			<h2>Screenshots</h2>
+			<div w3-include="./templates/gallery/gallery.html"></div>
+			
 			<br />
 			<div w3-include="./templates/footer/footer.html"></div>
 			
@@ -83,9 +88,11 @@
 		
 		
 		<script src="./scripts/data.js"></script>
+		<script src="./projects/beyond/beyond-data.js"></script>
 		<script type="text/javascript">
 			var navbarData=projects;
-			var carouselData=projects;
+			var carouselData=beyondData1;
+			var galleryData=beyondData2;
 		</script>
 		<!-- Script to allow HTML imports and repeats -->
 		<script src="./libs/w3data-edit.js"></script>
