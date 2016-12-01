@@ -16,7 +16,7 @@ var projects=
 		{
 			heading: "Beyond the Tales",
 			mutedHeading: "A 2D JRPG.",
-			img: "",
+			img: "./projects/beyond/images/world_map.png",
 			url: "./beyond.html",
 			description: "Inspired by the early Final Fantasy and Zelda games, <i>Beyond the Tales</i> is a 2D JRPG centered around a young man named Joreld. Raised and trained in the way of the Knight by his father, a retired Knight Commander of the kingdom of Cairnmount, Joreld comes home one day and finds that his world is going to change forever.",
 			pushRight: "",
@@ -26,7 +26,7 @@ var projects=
 			heading: "Unnamed Roguelike",
 			mutedHeading: "Heavily influenced by <i>The Binding of Isaac</i>.",
 	 		img: "./projects/roguelike/images/IMG_0265.png",
-			description: "A top-down dungeon-crawler roguelike game, designed to play and feel like <i>The Binding of Isaac: Rebirth</i>, yet be totally different at the same time. ",
+			description: "A top-down dungeon-crawler roguelike game, designed to play and feel like <i>The Binding of Isaac: Rebirth</i>, yet be totally different at the same time. Built for the iPad using SpriteKit.",
 	 		url: "./roguelike.html",
 			pushRight: "",
 			pullLeft: ""
