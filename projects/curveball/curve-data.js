@@ -9,13 +9,13 @@ var curveData1=
 			mutedHeading: "Test your reflexes in this fun adaptation of Pong in 3D.",
 			img: "https://lh3.googleusercontent.com/-mgagVda3YX2mkzFcCnGZW-Ck0WnQLfvyH4rXW2pa76cTi8GsCzx-um34DcexYU2xY4=h900",
 			description: "A game of Pong in 3D made with the Unity game engine. Beat your opponent by curving the ball with your paddle and bouncing it off the walls and past his paddle! Easy and fun to play, but difficult to master. Available for download <a href='https://play.google.com/store/apps/details?id=com.blakcat.pong'>here</a>.",
-			url: "./curveball.html"
+			url: "#screenshots"
 		},
 		{
 			heading: "Curveball Menu Options",
 			mutedHeading: "A 2D JRPG.",
 			img: "https://lh3.googleusercontent.com/Xefj4KtvpFkKglZgM_T__YhcLungfJuapVrUBPMGJI2jwZ5sj4jT8Ym6Yawh7lZ_zQ=h900",
-			url: "./beyond.html",
+			url: "#screenshots",
 			description: ""
 		},
 		{
@@ -23,7 +23,7 @@ var curveData1=
 			mutedHeading: "",
 	 		img: "https://lh3.googleusercontent.com/D9CuAVOO3SruP7lxXrYQoItS9s86gNVNfRmu3sY9KD4Vv-ZNf7xy4CM5U8ixZIzRhog=h900",
 			description: "",
-	 		url: "./roguelike.html"
+	 		url: "#screenshots"
 		}
 	 ]
 };

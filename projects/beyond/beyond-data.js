@@ -9,13 +9,13 @@ var beyondData1=
 			mutedHeading: "Test your reflexes in this fun adaptation of Pong in 3D.",
 			img: "./projects/beyond/images/world_map.png",
 			description: "Inspired by the early Final Fantasy and Zelda games, Beyond the Tales is a 2D JRPG centered around a young man named Joreld. Raised and trained in the way of the Knight by his father, a retired Knight Commander of the kingdom of Cairnmount, Joreld comes home one day and finds that his world is going to change forever.",
-			url: "./curveball.html"
+			url: "#screenshots"
 		},
 		{
 			heading: "Battles",
 			mutedHeading: "A 2D JRPG.",
 			img: "./projects/beyond/images/battle1.png",
-			url: "./beyond.html",
+			url: "#screenshots",
 			description: ""
 		},
 		{
@@ -23,7 +23,7 @@ var beyondData1=
 			mutedHeading: "",
 	 		img: "./projects/beyond/images/load_menu.png",
 			description: "",
-	 		url: "./roguelike.html"
+	 		url: "#screenshots"
 		}
 	 ]
 };
