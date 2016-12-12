@@ -14,21 +14,21 @@ var rogueData1=
 		{
 			heading: "Various Enemies",
 			mutedHeading: "",
-			description: "blah blah.",
+			description: "",
 			img: "./projects/roguelike/images/IMG_0257.png",
 			url: "./"
 		},
 		{
 			heading: "The Shop",
 			mutedHeading: "",
-			description: "blah blah.",
+			description: "",
 	 		img: "./projects/roguelike/images/IMG_0258.png",
 			url: ""
 		},
 		{
 			heading: "Projectile Properties",
 			mutedHeading: "",
-			description: "blah blah",
+			description: "",
 	 		img: "./projects/roguelike/images/IMG_0269.png",
 			url: "./"
 		},
