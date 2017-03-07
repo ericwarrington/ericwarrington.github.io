@@ -18,6 +18,8 @@
 .carousel-caption
 {
 	z-index: 10;
+	background-color: rgba(30, 30, 30, 0.3);
+	border-radius: 7px;
 }
 
 /* Declare heights because of positioning of img element */
