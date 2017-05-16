@@ -44,20 +44,5 @@ var curveData2=
 	])
 };
 
-for(var i=1; i<projects.data.length; i+=2)
-{
-	//if(i%2===1)	//odd-children have img on left and text on right
-	{
-		projects.data[i].pushRight="col-md-push-5";
-		projects.data[i].pullLeft="col-md-pull-7";
-	}
-}
-
-
-function displayFeaturetteData()
-{
-	w3DisplayData("featurette-repeat", featuretteData);
-};
-
 
 
