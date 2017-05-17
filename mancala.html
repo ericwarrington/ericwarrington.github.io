@@ -28,6 +28,7 @@
 		<![endif]-->
 
 		<link rel="stylesheet" href="./css/main.css"></link>
+		<link rel="stylesheet" href="./projects/mancala/mancala.css"></link>
 		<link rel="stylesheet" href="./css/prettyprint-custom.css"></link>
 	</head>
 	
@@ -66,7 +67,7 @@
 					<li>A strategy could not cause the game to crash; doing so would result in a grade of 0</li>
 				</ul>
 				
-				<h2>My Solution</h2>
+				<h2 id="solution">My Solution</h2>
 				<p>My strategy combined a variety of AI techniques. I took advantage of the randomness associated with the opponent's choices by utilizing a set pattern for the first few turns.  Following that, the strategy used a heuristic to determine the "best" move.  If the heuristic didn't generate a move, then a pit was chosen at random.  Here's the algorithm in more detail:</p>
 				<ul>
 					<li>
@@ -270,9 +271,10 @@ class Top
 		
 		
 		<script src="./scripts/data.js"></script>
+		<script src="./projects/mancala/mancala-data.js"></script>
 		<script type="text/javascript">
 			var navbarData=projects;
-			var carouselData=projects;
+			var carouselData=mancalaData;
 		</script>
 		<!-- Script to allow HTML imports and repeats -->
 		<script src="./libs/w3data-edit.js"></script>

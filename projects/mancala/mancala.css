@@ -1,0 +1,27 @@
+/* Eric Warrington */
+
+/* RESPONSIVE CSS
+ -------------------------------------------------- */
+@media(min-width: 768px)
+{
+	.carousel-inner > .item > img
+	{
+		top: 50% !important;
+	}
+}
+
+@media(min-width: 1194px)
+{
+	.carousel-inner > .item > img
+	{
+		top: 15% !important;
+	}
+}
+
+@media(min-width: 1300px)
+{
+	.carousel-inner > .item > img
+	{
+		top: -5% !important;
+	}
+}
