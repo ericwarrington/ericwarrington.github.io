@@ -8,8 +8,12 @@
 		<meta name="description" content="">
 		<meta name="author" content="Eric Warrington">
 		<link rel="icon" href="../../favicon.ico">
+			
+			
+		<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js" ></script><!-- -->
+		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" async integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script><!-- -->
 		
-				
+		
 		<!-- BootStrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -33,6 +37,9 @@
 	</head>
 	
 	<body>
+		<script src="./scripts/fake$.js" async></script>
+		
+		
 		<div w3-include="./templates/navbar/navbar.html" callback=""></div>
 		
 
@@ -277,29 +284,23 @@ class Top
 			var carouselData=mancalaData;
 		</script>
 		<!-- Script to allow HTML imports and repeats -->
-		<script src="./libs/w3data-edit.js"></script>
+		<script src="./libs/w3data-edit.js" async></script>
 		
 		<!-- Bootstrap core JavaScript
 		 ================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="https://getbootstrap.com/assets/js/vendor/jquery.min.js"><\/script>')</script>
-		<script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 		<!-- Code Prettify JS -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://getbootstrap.com/dist/js/bootstrap.min.js" defer></script>
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<script src="https://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+		<script src="https://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js" async></script>
 		
 		<script>
-			!function($)
+			$(function()
 			{
-				$(function()
-				{
-					prettyPrint();
-				})
-			}(window.jQuery);
-		
-		prettyPrint();
-		</script>
+				prettyPrint();
+			});
+			</script>
+		<script>window.jQuery || !function() {document.write('<script src="https://getbootstrap.com/assets/js/vendor/jquery.min.js"><\/script>'); console.warn("loading alt jQuery.");}</script>
 	</body>
 </html>

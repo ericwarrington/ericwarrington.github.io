@@ -1,0 +1,56 @@
+//Eric Warrington
+
+"use strict";
+
+if(!window.jQuery)
+{
+	window.$jq=[];
+	console.warn("preparing fake jQuery");
+
+	Object.defineProperty(window, 'jQuery',
+	{
+		set: function(jquery)
+		{
+			console.warn("jQuery loaded!!!");
+			
+			$=jquery;
+			for(var i=0; i<$jq.length; i++)
+			{
+				$($jq[i]);
+			}
+		},
+		get: function()
+		{
+			return $.fn ? $ : undefined;
+		},
+		enumerable: true,
+		configurable: true
+	});
+
+	window.$=function()
+	{
+		if(typeof arguments[0]==="function")
+		{
+			$(document).ready(arguments[0]);
+		}
+		else if(arguments[0]===document)
+		{
+			var val=
+			{
+				ready: function(fn)
+				{
+					console.warn("registering function...  " + fn);	//logged as warning to separate from other logs
+					$jq.push(fn);
+				}
+			};
+			
+			return val;
+		}
+		else if(arguments[0])
+		{
+			throw new Error("jQuery has not been loaded. '" + typeof arguments[0] + "' arguments aren't legal here.");
+		}
+		else return {test:123};
+	}
+}
+

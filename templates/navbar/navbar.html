@@ -1,9 +1,10 @@
 <!-- Eric Warrington -->
+<!DOCTYPE html>
 
-
+<html>
 <style w3-include="./templates/navbar/navbar.css" callback="chickens"></style>
 
-<script type=".text/javascript">
+<script type="text/javascript">
 	window.setAlt=function(image)
 	{
 		//stop image from continually erroring (when cloned)
@@ -16,6 +17,9 @@
 		image.setAttribute("style", "display: none");
 		
 		image.onerror=null;
+		
+		//setalt/0;
+		//console.log("testing...");
 	};
 </script>
 
@@ -43,7 +47,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li w3-repeat="data"><a href={{url}}>{{heading}}</a></li>
+								<li w3-repeat="data"><a href="{{url}}">{{heading}}</a></li>
 							</ul>
 						</li>
 						
@@ -53,7 +57,7 @@
 						<!-- contact stuff here -->
 						<li id="contact" style="color: white !important;">
 							<a href="javascript:void(0);">
-								<span>Hello</span><img src="#" onError="setAlt(this);" /><span>r<span class="noshow">bullsh</span>it.</span>edu
+								<span>Hello</span><img src="#" onError="setAlt(this);"></img><span>r<span class="noshow">bullsh</span>it.</span>edu
 							</a>
 						</li>
 					</ul>
@@ -68,6 +72,6 @@
 
 <script w3-include="./templates/navbar/navbar.js"></script>
 
-
+</html>
 
 
