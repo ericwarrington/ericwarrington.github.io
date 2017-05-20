@@ -5,13 +5,13 @@
 if(!window.jQuery)
 {
 	window.$jq=[];
-	console.warn("preparing fake jQuery");
+	console.log("preparing fake jQuery");
 
 	Object.defineProperty(window, 'jQuery',
 	{
 		set: function(jquery)
 		{
-			console.warn("jQuery loaded!!!");
+			console.log("jQuery loaded!!!");
 			
 			$=jquery;
 			for(var i=0; i<$jq.length; i++)
@@ -39,7 +39,7 @@ if(!window.jQuery)
 			{
 				ready: function(fn)
 				{
-					console.warn("registering function...  " + fn);	//logged as warning to separate from other logs
+					console.log("registering function...  " + fn);
 					$jq.push(fn);
 				}
 			};
