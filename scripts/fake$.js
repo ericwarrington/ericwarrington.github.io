@@ -11,7 +11,7 @@ if(!window.jQuery)
 	{
 		set: function(jquery)
 		{
-			console.log("jQuery loaded!!!");
+			console.log("jQuery " + jquery.fn.jquery.replace(/[^0-9.]/gi, '') + " loaded!!!");
 			
 			$=jquery;
 			for(var i=0; i<$jq.length; i++)
