@@ -15,11 +15,14 @@
 	margin-bottom: 60px;
 }
 /* Since positioning the image, we need to help out the caption */
+/* Also, make the container have a dark BG so text is more legible on a variety of imgs */
 .carousel-caption
 {
 	z-index: 10;
-	background-color: rgba(30, 30, 30, 0.3);
+	background-color: rgba(30, 30, 30, 0.65);
 	border-radius: 7px;
+	padding-left: 25px;
+	padding-right: 25px;
 }
 
 /* Declare heights because of positioning of img element */
