@@ -33,8 +33,6 @@ w3DisplayData("navbar", navbarData);
 		{
 			$("#navbar li.dropdown").addClass('active');
 		}
-	
-		window.debugAct=active;
 	});
 }();
 
