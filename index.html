@@ -8,28 +8,51 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<link rel="icon" href="../../favicon.ico">
-				
-		<!-- BootStrap CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-		
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<link href="https://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 			
-		<script src="https://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+		<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js" ></script><!-- -->
+		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" async integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+				
+		<!-- will block in IE < 9, but what else can ya do? -->
+		<!--[if IE]>
+			<!-- BootStrap CSS -- >
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+			<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -- >
+			<link href="https://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+			<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -- >
+			<!--[if lt IE 9]>
+				<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+				<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+			<![endif]->
+		 
+			<link rel="stylesheet" href="./css/main.css"></link>
+			<link rel="stylesheet" href="./templates/featurettes/featurettes.css"></link>
 		<![endif]-->
-
-		<link rel="stylesheet" href="./css/main.css"></link>
-		<link rel="stylesheet" href="./templates/featurettes/featurettes.css"></link>
-		<link rel="stylesheet" href="./css/prettyprint-custom.css"></link>
 	</head>
 	
 	<body>
+		<!-- stylesheets in the body are treated as async -->
+		<!-- [if !IE]> -->
+			<!-- BootStrap CSS -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" lazyload="1">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" lazyload="1">
+			<!-- Code Prettify CSS -->
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css" lazyload="1">
+			<link rel="stylesheet" href="https://cdn.rawgit.com/google/code-prettify/master/styles/sons-of-obsidian.css" lazyload="1">
+
+			<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+			<link href="https://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet" lazyload="1">
+			
+			<link rel="stylesheet" href="./css/main.css"></link>
+			<link rel="stylesheet" href="./templates/featurettes/featurettes.css"></link>
+		<!-- <![endif] -->
+		
+		
+		<script src="./scripts/fake$.js" async></script>
+
+
 		<div w3-include="./templates/navbar/navbar.html" callback=""></div>
 		
 		
@@ -50,7 +73,7 @@
 		
 		
 
-		
+
 		
 		
 		
@@ -83,10 +106,12 @@
 		<!-- Bootstrap core JavaScript
 		 ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="https://getbootstrap.com/assets/js/vendor/jquery.min.js"><\/script>')</script>
-		<script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+		<script src="https://getbootstrap.com/dist/js/bootstrap.min.js" defer></script>
+		<!-- IE10 emulation warning -->
+		<script src="https://getbootstrap.com/assets/js/ie-emulation-modes-warning.js" defer></script>
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<script src="https://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+		<script src="https://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js" defer></script>
+		
+		<script>window.jQuery || !function() {document.write('<script src="https://getbootstrap.com/assets/js/vendor/jquery.min.js"><\/script>'); console.warn("loading alt jQuery.");}()</script>
 	</body>
 </html>
