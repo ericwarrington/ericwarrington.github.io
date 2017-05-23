@@ -9,34 +9,34 @@ var rogueData1=
 			mutedHeading: "",
 			img: "./projects/roguelike/images/IMG_0265.png",
 			description: "A top-down dungeon-crawler roguelike game, designed to play and feel like <i>The Binding of Isaac: Rebirth</i>, yet be totally different at the same time. ",
-			url: "./"
+			url: "#screenshots"
 		},
 		{
 			heading: "Various Enemies",
 			mutedHeading: "",
 			description: "",
 			img: "./projects/roguelike/images/IMG_0257.png",
-			url: "./"
+			url: "#screenshots"
 		},
 		{
 			heading: "The Shop",
 			mutedHeading: "",
 			description: "",
 	 		img: "./projects/roguelike/images/IMG_0258.png",
-			url: ""
+			url: "#screenshots"
 		},
 		{
 			heading: "Projectile Properties",
 			mutedHeading: "",
 			description: "",
 	 		img: "./projects/roguelike/images/IMG_0269.png",
-			url: "./"
+			url: "#screenshots"
 		},
 		{
 			heading: "The Boss Room",
 			description: "",
 			img: "./projects/roguelike/images/IMG_0260.png",
-			url: ""
+			url: "#screenshots"
 		},
 	]
 };
