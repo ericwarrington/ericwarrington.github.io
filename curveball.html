@@ -99,13 +99,11 @@
 		<!-- Script to allow HTML imports and repeats -->
 		<script src="./libs/w3data-edit.js"></script>
 		
-		<!-- Bootstrap core JavaScript
-		 ================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="https://getbootstrap.com/assets/js/vendor/jquery.min.js"><\/script>')</script>
-		<script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<script src="https://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+		
+		<!-- Bootstrap core JavaScript -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" defer></script>
+		
+		<!-- Alternate jQuery -->
+		<script>window.jQuery || !function() {document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js"><\/script>'); console.warn("loading alt jQuery.");}()</script>
 	</body>
 </html>
