@@ -1,10 +1,7 @@
 "use strict";
 
-!function() //displayCarouselData()
+!function()
 {
-	w3DisplayData("carousel-repeat", carouselData);
-	w3DisplayData("cIndicator-repeat", carouselData);
-	
 	$(function()
 	{
 		$(".carousel-indicators li:first").addClass("active");

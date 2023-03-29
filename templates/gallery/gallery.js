@@ -2,10 +2,7 @@
 
 !function()
 {
-	w3DisplayData("links", galleryData);
-	
-	
-	document.getElementById('links').onclick=function(event)
+	document.getElementById("links").onclick=function(event)
 	{
 		var urlProp="img";
 		
@@ -16,9 +13,9 @@
 	//	var links = this.getElementsByTagName('a');
 		
 		var index=null;
-		for(var i=0; i<galleryData.data.length; i++)
+		for(var i=0; i<galleryData.length; i++)
 		{
-			if(galleryData.data[i]===link || galleryData.data[i][urlProp]===link.getAttribute(urlProp))
+			if(galleryData[i]===link || galleryData[i][urlProp]===link.getAttribute(urlProp))
 			{
 				index=i;
 				break;
@@ -26,7 +23,7 @@
 		}
 		options.index=index || link;
 		
-		blueimp.Gallery(galleryData.data, options);
+		blueimp.Gallery(galleryData, options);
 	};
 	
 	
@@ -82,8 +79,16 @@
 				setWrapperWidth();
 			}
 		}
-		imgs[index].onload=imgComplete;
-		imgs[index].onerror=imgComplete;	//TODO: add warning msg
+
+		if(imgs[index].complete)
+		{
+			imgComplete();
+		}
+		else
+		{
+			imgs[index].onload=imgComplete;
+			imgs[index].onerror=imgComplete;	//TODO: add warning msg
+		}
 	}
 }();
 

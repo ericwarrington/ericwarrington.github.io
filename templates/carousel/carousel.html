@@ -7,18 +7,18 @@
 <div id="myCarousel" class="carousel slide">
 	<!-- Indicators -->
 	<ol id="cIndicator-repeat" class="carousel-indicators">
-		<li w3-repeat="data" data-target="#myCarousel" data-slide-to="{{index}}"></li>
+		<li w3-repeat="carouselData" data-target="#myCarousel" data-slide-to="{{index}}"></li>
 	</ol>
 	<div id="carousel-repeat" class="carousel-inner" role="listbox">
-		<div w3-repeat="data" class="item">
+		<div w3-repeat="carouselData" class="item">
 			<img class="first-slide" src="{{img}}" alt="First slide" />
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>{{heading}}</h1>
-						<p>{{description}}</p>
-						<p><a class="btn btn-lg btn-primary" href="{{url}}" role="button">See More</a></p>
-					</div>
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>{{heading}}</h1>
+					<p>{{description}}</p>
+					<p><a class="btn btn-lg btn-primary" href="{{url}}" role="button">See More</a></p>
 				</div>
+			</div>
 		</div>
 	</div>
 	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -30,7 +30,6 @@
 		<span class="sr-only">Next</span>
 	</a>
 </div>
-<!-- /.carousel -->
 
 
 

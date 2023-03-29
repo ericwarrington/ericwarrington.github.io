@@ -1,6 +1,13 @@
 <!-- FOOTER -->
+
 <!-- make sure to wrap an include for Footer in a .container -->
-<footer>
-	<p class="pull-right"><a href="#">Back to top</a></p>
-	<p>&copy; 2017 <a href="http://ericwarrington.github.io">Eric Warrington</a>. All Rights Reserved.</p>
-</footer>
+<div id="footer" x="data">
+	<footer w3-interpolate>
+		<p class="pull-right"><a href="#">Back to top</a></p>
+		<p>&copy; 2017-{{thisYear}} <a href="http://ericwarrington.github.io">Eric Warrington</a>. All Rights Reserved.</p>
+	</footer>
+</div>
+
+<script>
+	window.thisYear=new Date().getFullYear();
+</script>

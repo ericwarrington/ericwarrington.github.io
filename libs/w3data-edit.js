@@ -3,15 +3,23 @@
 
 "use strict";
 
-/* W3Data ver 1.1 by W3Schools.com */
-var w3DataObject = {};
+/* W3Data ver 1.1 by W3Schools.com, edited */
+const w3DataObject = new Set();
 
-function w3DisplayData(id, data)
+function w3DisplayData(elementIdOrRef, data = window)
 {
-	var htmlObj, htmlTemplate, html, arr = [],a, l, rowClone, x, j, i, ii, cc, repeat, repeatObj, repeatX = "";
+	var htmlObj, htmlTemplate, html, arr = [], a, l, rowClone, x, j, i, ii, cc, repeat, repeatObj, repeatX = "";
 	
-	htmlObj = document.getElementById(id);
-	htmlTemplate = w3InitTemplate(id, htmlObj);
+	if(elementIdOrRef instanceof Element)
+	{
+		htmlObj = elementIdOrRef;
+	}
+	else
+	{
+		htmlObj = document.getElementById(elementIdOrRef) || document.body;
+	}
+	
+	htmlTemplate = w3InitTemplate(htmlObj);
 	html = htmlTemplate.cloneNode(true);
 	arr = w3GetElementsByAttribute(html, "w3-repeat");
 	l = arr.length;
@@ -29,118 +37,106 @@ function w3DisplayData(id, data)
 		}
 		arr[j].removeAttribute("w3-repeat");
 		repeatObj = data[repeat];
-		if(repeatObj && typeof repeatObj == "object" && repeatObj.length != "undefined")
+		if(repeatObj instanceof Array || (repeatObj && typeof repeatObj[Symbol.iterator] == "function"))
 		{
 			i = 0;
-			for(x in repeatObj)
+			for(x of repeatObj)
 			{
 				i += 1;
 				rowClone = arr[j];
-				rowClone = w3NeedleInHaystack(rowClone, "element", repeatX, repeatObj[x]);
+				rowClone = w3ReplaceCurly(rowClone, "element", repeatX, x);
 				a = rowClone.attributes;
 				for(ii=0; ii<a.length; ii++)
 				{
-					a[ii].value = w3NeedleInHaystack(a[ii], "attribute", repeatX, repeatObj[x], i-1).value;
+					a[ii].value = w3ReplaceCurly(a[ii], "attribute", repeatX, x, i-1).value;
 				}
-				(i === repeatObj.length) ? arr[j].parentNode.replaceChild(rowClone, arr[j]): arr[j].parentNode.insertBefore(rowClone, arr[j]);
+				
+				let child = (arr[j] == html) ? htmlObj : arr[j];
+				let parent = child.parentNode;
+				(i === repeatObj.length) ? parent.replaceChild(rowClone, child) : parent.insertBefore(rowClone, child);
 			}
 		}
 		else
 		{
-			console.log("w3-repeat must be an array. " + repeat + " is not an array.");
+			console.warn("w3-repeat requires an iterable value. " + `${typeof repeatObj} (${repeatObj}) is not iterable.`);
 			continue;
 		}
 	}
-	html = w3NeedleInHaystack(html, "element");
-	htmlObj.parentNode.replaceChild(html, htmlObj);
 
-	function w3InitTemplate(id, obj)
+	html = w3ReplaceCurly(html, "element");
+	try {htmlObj.parentNode.replaceChild(html, htmlObj)}
+	catch(e) {console.error("Caught error -", e)}
+
+	function w3InitTemplate(obj)
 	{
-		var template;
-		template = obj.cloneNode(true);
-		if(w3DataObject.hasOwnProperty(id))
+		if(w3DataObject.has(obj))
 		{
-			return w3DataObject[id];
+			return w3DataObject.get(obj);
 		}
-		w3DataObject[id] = template;
+
+		const template = obj.cloneNode(true);
+		w3DataObject.add(template);
 		return template;
 	}
 
 	function w3GetElementsByAttribute(x, att)
 	{
-		var	arr = [],
-			arrCount = -1,
-			i, l, y = x.getElementsByTagName("*"),
-			z = att.toUpperCase();
-		l = y.length;
-		for(i=-1; i<l; i++)
-		{
-			if(i == -1)
-			{
-				y[i] = x;
-			}
-			if(y[i].getAttribute(z) !== null)
-			{
-				arrCount += 1;
-				arr[arrCount] = y[i];
-			}
-		}
+		let arr = Array.from(x.querySelectorAll(`[${att}]`));
+		if(x.getAttribute(att)) arr.unshift(x);
 		return arr;
 	}
 
-	function w3NeedleInHaystack(elmnt, typ, repeatX, x, index)
+	function w3ReplaceCurly(elmnt, typ, repeatX, x, index)
 	{
-		var value, rowClone, pos1, haystack, pos2, needle = [], needleToReplace, i, cc, r;
+		var value, rowClone, pos1, originalHtml, pos2, cc, r;
 		rowClone = elmnt.cloneNode(true);
 		pos1 = 0;
 		while(pos1 > -1)
 		{
-			haystack = (typ == "attribute") ? rowClone.value : rowClone.innerHTML;
-			pos1 = haystack.indexOf("{{", pos1);
+			originalHtml = (typ == "attribute") ? rowClone.value : rowClone.innerHTML;
+			pos1 = originalHtml.indexOf("{{", pos1);
 			if(pos1 === -1)
 			{
 				break;
 			}
-			pos2 = haystack.indexOf("}}", pos1 + 1);
-			needleToReplace = haystack.substring(pos1 + 2, pos2);
-			needle = needleToReplace.split("||");
+			pos2 = originalHtml.indexOf("}}", pos1 + 1);
+			const valueToReplace = originalHtml.substring(pos1 + 2, pos2);
 			value = undefined;
-			for(i=0; i<needle.length; i++)
+			for(let lookFor of valueToReplace.split("||"))
 			{
-				needle[i] = needle[i].replace(/^\s+|\s+$/gm, ''); //trim
-				//value = ((x && x[needle[i]]) || (data && data[needle[i]]));
+				lookFor = lookFor.replace(/^\s+|\s+$/gm, ''); //trim it
 				if(x)
 				{
-					value = x[needle[i]];
+					value = x[lookFor];
 				}
 				if(value == undefined && data)
 				{
-					value = data[needle[i]];
+					value = data[lookFor];
 				}
-				if(value == undefined)
+				if(x && value == undefined)
 				{
-					cc = needle[i].split(".");
+					cc = lookFor.split(".");
 					if(cc[0] == repeatX)
 					{
 						value = x[cc[1]];
 					}
 				}
-				if(value == undefined)
+				if(x && value == undefined)
 				{
-					if(needle[i] == repeatX)
+					if(lookFor == repeatX)
 					{
 						value = x;
 					}
 				}
 				if(value == undefined)
 				{
-					if(needle[i].substr(0, 1) == '"')
+					if(lookFor.substr(0, 1) == '"')
 					{
-						value = needle[i].replace(/"/g, "");
+						value = lookFor.replace(/"/g, "");
 					}
-					else if(needle[i].substr(0, 1) == "'")
+					else if(lookFor.substr(0, 1) == "'")
 					{
-						value = needle[i].replace(/'/g, "");
+						value = lookFor.replace(/'/g, "");
 					}
 				}
 				if(value != undefined)
@@ -149,13 +145,13 @@ function w3DisplayData(id, data)
 				}
 			}
 												  
-			if(!value && needleToReplace==="index")
+			if(!value && valueToReplace==="index")
 			{
 				value=index;
 			}
 			if(value != undefined)
 			{
-				r = "{{" + needleToReplace + "}}";
+				r = "{{" + valueToReplace + "}}";
 				if(typ == "attribute")
 				{
 					rowClone.value = rowClone.value.replace(r, value);
@@ -191,22 +187,54 @@ function w3DisplayData(id, data)
 	}
 }
 
-window.w3inclusions={};
-(function w3IncludeHTML()
+
+function createPromise()
+{
+	let r;
+	let p = new Promise((resolve) => r = resolve);
+
+	return (
+	{
+		complete: false,
+		promise: p,
+		resolve: r,
+	});
+}
+
+let w3inclusions={};
+Object.defineProperty(window, "fileLoaded",
+{
+	get: function()
+	{
+		return (fileName) =>
+		{
+			if(!w3inclusions[fileName])
+				w3inclusions[fileName]=createPromise(fileName);
+
+			return w3inclusions[fileName].promise;
+		}
+	},
+	enumerable: true,
+	configurable: true
+});
+
+
+$(function w3IncludeHTML()
 {
 	var z, i, a, file, xhttp;
-	z = document.getElementsByTagName("*");
-	for(i=0; i<z.length; i++)
+	for(let z of document.querySelectorAll("[w3-include]"))
 	{
-		if(z[i].getAttribute("w3-include"))
+		// if(z[i].getAttribute("w3-include"))
 		{
-			a = z[i].cloneNode(false);
-			file = z[i].getAttribute("w3-include");
+			a = z.cloneNode(false);
+			file = z.getAttribute("w3-include");
+			let fileName = file.split("/").pop();
  
-			console.log("include:", file, w3inclusions[file]);
-			if(w3inclusions[file])
+			console.log("include:", file, !!w3inclusions[fileName]);
+			if(!w3inclusions[fileName])
+				w3inclusions[fileName]=createPromise(fileName);
+			else if(w3inclusions[fileName].complete)
 				continue;
-			w3inclusions[file]=true;
  
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function()
@@ -220,9 +248,7 @@ window.w3inclusions={};
  
 					a.removeAttribute("w3-include");
 					a.innerHTML = xhttp.responseText;
-					z[i].parentNode.replaceChild(a, z[i]);
- 
-					//w3IncludeHTML();
+					z.parentNode.replaceChild(a, z);
  
 					//include javascript
 					if(a.tagName=="SCRIPT")
@@ -251,8 +277,11 @@ window.w3inclusions={};
 						}
 					}
  
-					//w3IncludeHTML();
+					//Resolve the Promise associated with the included file
+					w3inclusions[fileName].resolve();
+					w3inclusions[fileName].complete=true;
 
+					//Call any callbacks listed on the w3-include directive
 					var callback=a.getAttribute("callback");
 					if(callback)
 					{
@@ -260,11 +289,13 @@ window.w3inclusions={};
 						a.removeAttribute("callback");
 					}
  
+					w3Interpolate();
 					w3IncludeHTML();
 				}
 				else if(xhttp.readyState==4)
 				{
-					console.warn("There was an error loading %s: %s", file, xhttp.statusText);
+					console.error("There was an error loading %s: %s", file, xhttp.statusText);
+					w3Interpolate();
 					w3IncludeHTML();
 				}
 			}
@@ -273,7 +304,20 @@ window.w3inclusions={};
 			return;
 		}
 	}
- })();
+});
+
+function w3Interpolate()
+{
+	const arr = [...document.querySelectorAll("[w3-interpolate]"), ...document.querySelectorAll("[w3-repeat]")];
+	for(let element of arr)
+	{
+		w3DisplayData(element);
+		element.removeAttribute("w3-interpolate");
+	}
+}
+
+$(w3Interpolate);
+
 
 function w3Http(target, readyfunc, xml, method)
 {

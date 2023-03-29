@@ -18,6 +18,9 @@ if(!window.jQuery)
 			{
 				$($jq[i]);
 			}
+
+			//clear the function queue
+			$jq.length=0;
 		},
 		get: function()
 		{

@@ -2,10 +2,6 @@
 //Eric Warrington
 
 
-//needs to be done first
-w3DisplayData("navbar", navbarData);
-
-
 !function()
 {
 	var e=document.getElementById("contact").children[0];
