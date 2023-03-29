@@ -7,7 +7,7 @@ if(!window.jQuery)
 	window.$jq=[];
 	console.log("preparing fake jQuery");
 
-	Object.defineProperty(window, 'jQuery',
+	Object.defineProperty(window, "jQuery",
 	{
 		set: function(jquery)
 		{
@@ -42,7 +42,7 @@ if(!window.jQuery)
 			{
 				ready: function(fn)
 				{
-					console.log("registering function...  " + fn);
+					console.log("registering function...  " + fn.name);
 					$jq.push(fn);
 				}
 			};
@@ -53,7 +53,10 @@ if(!window.jQuery)
 		{
 			throw new Error("jQuery has not been loaded. '" + typeof arguments[0] + "' arguments aren't legal here.");
 		}
-		else return {test:123};
+		else
+		{
+			throw new Error("jQuery has not been loaded. Illegal arguments:", arguments);
+		}
 	}
 }
 

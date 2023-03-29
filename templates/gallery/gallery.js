@@ -10,7 +10,6 @@
 		var target = event.target || event.srcElement;
 		var link = target.src ? target.parentNode : target;
 		var options = {event:event, urlProperty:urlProp};
-	//	var links = this.getElementsByTagName('a');
 		
 		var index=null;
 		for(var i=0; i<galleryData.length; i++)
@@ -27,20 +26,18 @@
 	};
 	
 	
-	console.log(document.readyState);
-	
 	function setWrapperWidth()
 	{
 		var imgs=$("#image-wrapper > a");
 		var sum=5;  	//buffer so all imgs fit
-		var buffer=[]	//for testing
+		var buffer=[];	//for testing
 		for(var i=0; i<imgs.length; i++)
 		{
 			sum+=imgs[i].clientWidth;
 			buffer[i]=imgs[i].clientWidth;
 		}
 		
-		$("#image-wrapper")[0].setAttribute("style", "display: block; width:" + sum + "px; height:100%");
+		$("#image-wrapper")[0].setAttribute("style", "display:block; width:" + sum + "px; height:100%");
 		console.log(buffer, sum);
 	}
 	
@@ -59,7 +56,7 @@
 	{
 		if(index>31)
 		{
-			console.warn("Gallery can only handle 32 images at a maximum.", index);
+			console.warn("Gallery can only handle a max of 32 images.", index);
 			return;
 		}
 		else if(!imgs[index].src)
