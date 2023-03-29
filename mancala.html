@@ -154,11 +154,11 @@
 						<pre class="prettyprint linenums">
 try
 {
-	Field field=Math.class.getDeclaredField("randomNumberGenerator");
-	field.setAccessible(true);
+	Field rng=Math.class.getDeclaredField("randomNumberGenerator");
+	rng.setAccessible(true);
 	Random r=new Random();
 	r.setSeed(50);
-	field.set(null, r);
+	rng.set(null, r);
 }
 catch(Exception e) {}
 						</pre>
@@ -203,11 +203,11 @@ class Top
 			/*
 			try
 			{
-				Field field=Math.class.getDeclaredField("randomNumberGenerator");
-				field.setAccessible(true);
+				Field rng=Math.class.getDeclaredField("randomNumberGenerator");
+				rng.setAccessible(true);
 				Random r=new Random();
 				r.setSeed(50);
-				field.set(null, r);
+				rng.set(null, r);
 			}
 			catch(Exception e) {}
 			//*/
@@ -218,7 +218,7 @@ class Top
 			case 1:
 				choice=1;
 				break;
-			case 2:			//2,1
+			case 2:			//turn 2, part 1
 				for(int i=4; i&lt;board.WIDTH-1; i++)
 				{
 					if(board.getSeeds(1,i)==i)
@@ -228,10 +228,10 @@ class Top
 					}
 				}
 				break;
-			case 3:			//2,2
+			case 3:			//turn 2, part 2
 				choice=1;
 				break;
-			case 4:			//2,3
+			case 4:			//turn 2, part 3
 				for(int i=4; i&lt;board.WIDTH-1; i++)
 					if(board.getSeeds(1,i)==i-1)
 						choice=i;
